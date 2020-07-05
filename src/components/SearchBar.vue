@@ -18,6 +18,7 @@ export default {
     .search__bar {
         height: 30px;
         width: 25vw;
+        margin: auto;
     }
 
     .search__bar-input--text {

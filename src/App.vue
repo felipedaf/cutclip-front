@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
-    <SearchBar placeholder="Paste your Youtube Url" id="search"></SearchBar>
+    <VideoCutter></VideoCutter>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
-import SearchBar from './components/SearchBar.vue'
+import VideoCutter from './components/VideoCutter'
 export default {
   name: 'App',
   components: {
     Navbar,
-    SearchBar
+    VideoCutter
   }
 }
 </script>
@@ -29,9 +29,5 @@ body {
   height: 100vh;
   background: #292929;
   font-family: 'Roboto', sans-serif;
-}
-
-#search {
-  margin: 1vh auto 1vh auto;
 }
 </style>

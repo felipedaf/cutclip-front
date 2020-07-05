@@ -19,7 +19,6 @@ export default {
 
 <style lang='scss' scoped>
     .nav__bar {
-        
         border-bottom: 2px solid #171717;
         height: 50px;
         width: 100%;
