@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Navbar></Navbar>
-    <VideoCutter></VideoCutter>
+    <Navbar id="navbar"></Navbar>
+    <VideoCutter id="cutter"></VideoCutter>
   </div>
 </template>
 
@@ -29,5 +29,20 @@ body {
   height: 100vh;
   background: #292929;
   font-family: 'Roboto', sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#navbar {
+  height: 50px;
+}
+
+#cutter {
+    flex-grow: 1;
+    max-height: calc(100vh - 50px);
 }
 </style>

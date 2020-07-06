@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <SearchBar placeholder="Paste youtube url" id="search"></SearchBar>
+        <SearchBar placeholder="Paste Youtube URL." id="search"></SearchBar>
     </div>
 </template>
 
@@ -16,9 +16,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .container {
     width: 100%;
-    height: calc(100vh - 52px);
     padding: 10px;
     box-sizing: border-box;
 }
