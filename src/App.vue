@@ -1,18 +1,35 @@
 <template>
   <div id="app">
-    <Navbar id="navbar"></Navbar>
-    <VideoCutter id="cutter"></VideoCutter>
+    <Navbar @toggle="toggle" id="navbar"/>
+    <div id="app__action-space">
+      <transition name="fade">
+        <Menu v-if="isMenuOpened"/>
+      </transition>
+      <VideoCutter id="cutter"/>
+    </div>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
 import VideoCutter from './components/VideoCutter'
+import Menu from './components/Menu'
 export default {
   name: 'App',
+  data() {
+    return {
+      isMenuOpened: false
+    }
+  },
   components: {
     Navbar,
-    VideoCutter
+    VideoCutter,
+    Menu
+  },
+  methods: {
+    toggle(toggleBool) {
+      this.isMenuOpened = toggleBool
+    }
   }
 }
 </script>
@@ -22,6 +39,18 @@ export default {
 
 * {
   margin: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: width .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active em versões anteriores a 2.1.8 */ {
+  width: 0;
+}
+
+#app__action-space {
+  display: flex;
+  height: 100%;
 }
 
 body {
