@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar @toggle="toggle" id="navbar"/>
     <div id="app__action-space">
-      <transition name="fade">
+      <transition name="slide">
         <Menu v-if="isMenuOpened"/>
       </transition>
       <VideoCutter id="cutter"/>
@@ -41,10 +41,10 @@ export default {
   margin: 0;
 }
 
-.fade-enter-active, .fade-leave-active {
+.slide-enter-active, .slide-leave-active {
   transition: width .5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active em versões anteriores a 2.1.8 */ {
+.slide-enter, .slide-leave-to {
   width: 0;
 }
 
