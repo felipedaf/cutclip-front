@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs": "^0.0.1-security",
     "sass": "^1.26.9",
     "sass-loader": "^9.0.1",
     "vue": "^2.6.11"
