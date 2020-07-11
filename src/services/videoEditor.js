@@ -1,6 +1,6 @@
 import getVideoInfo from './videoInfo.js'
 const ffmpeg = require('fluent-ffmpeg')
-import timeFactory from '../util/timeManager'
+import timeFactory from '../utils/timeManager'
 
 const getProcess = async (videoInfo, startTime, endTime, format = 'mp4') => {
     const timeDiff = startTime.getTimeDiff(endTime)
