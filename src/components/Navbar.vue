@@ -1,6 +1,5 @@
 <template>
   <nav class="nav__bar">
-    <ToggleButton @toggle="toggleNow" class="nav__bar-toggle" :size="'3vh'"/>
     <div class="nav__bar-logo">
         <svg width="152" height="32" viewBox="0 0 152 32">
             <path d="M43.2361 3.51557L13.07 18.6829L16.6171 22.2235L49.5959 4.90437L43.2361 3.51557Z" fill="#18A0FB"/>
@@ -15,17 +14,8 @@
 </template>
 
 <script>
-import ToggleButton from './ToggleButton'
 export default {
-    components: {
-        ToggleButton
-    },
-    name: 'Navbar',
-    methods: {
-        toggleNow (bool) {
-            this.$emit('toggle', bool)
-        }
-    }
+    name: 'Navbar'
 }
 </script>
 
@@ -35,9 +25,8 @@ export default {
         height: 50px;
         width: 100%;
         background-color: black;
-        display: grid;
-        grid-auto-flow: column;
-        grid-template-columns: 1fr 1fr 1fr;
+        display: flex;
+        justify-content: center;
     }
 
     .nav__bar-logo {

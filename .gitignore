@@ -1,6 +1,10 @@
 .DS_Store
+package-lock.json
+babel.config.js
+yarn.lock
 node_modules
 /dist
+
 
 # local env files
 .env.local
