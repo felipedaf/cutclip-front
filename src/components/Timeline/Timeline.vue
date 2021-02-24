@@ -5,7 +5,10 @@
         class="timeline__container"
     >
         <div class="timeline__selector-relative">
-          <Selector :timeline="this"></Selector>
+          <Selector
+            :timeline="this"
+            @cutPercentages="this.sendCutPercentages"
+          ></Selector>
         </div>
         <div class="timeline__current-relative">
             <div
@@ -90,6 +93,9 @@ export default {
         },
         mouseUp: function() {
             this.isMouseUp = true
+        },
+        sendCutPercentages: function(percentages) {
+            this.$emit("cutPercentages", percentages)
         }
 
     },

@@ -150,6 +150,14 @@ export default {
             this.endPercentage = percentage
             this.endPosition = percentage
         })
+
+        this.timeline.$on("cut", () => {
+            this.$emit("cutPercentages", {
+                startPosition: this.startPosition,
+                endPosition: this.endPosition
+            });
+
+        })
     },
     destroyed: function() {
         window.removeEventListener("resize", () => {})

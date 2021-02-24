@@ -23,6 +23,9 @@ const API = () => ({
 
         return response
 
+    },
+    printSomething: () => {
+        console.log("printing")
     }
 
 })
