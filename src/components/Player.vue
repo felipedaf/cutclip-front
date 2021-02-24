@@ -233,6 +233,11 @@ export default {
             this.playerReady = true
         }
 
+        const cuts = localStorage.cuts
+
+        if (!cuts)
+            localStorage.cuts = JSON.stringify([])
+
     },
     methods: {
         playAndPause: function() {
@@ -315,7 +320,14 @@ export default {
 
             this.showCutName = false
             const response = await api.makeACut(cutMeta)
-            console.log(response)
+
+            if (response.status === 201) {
+                const cutList = JSON.parse(localStorage.cuts)
+
+                cutList.push({ ...response.data })
+
+                localStorage.cuts = JSON.stringify(cutList)
+            }
 
         }
     }
