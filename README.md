@@ -1,6 +1,6 @@
 # cutclip
 
-# This project only works with the backend
+### This project only works with the backend
 
 ## Description
 Frontend of a service that allows you to cut youtube videos and download just the part you want.
