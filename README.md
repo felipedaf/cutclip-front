@@ -1,24 +1,26 @@
 # cutclip
 
+# This project only works with the backend
+
+## Description
+Frontend of a service that allows you to cut youtube videos and download just the part you want.
+
 ## Project setup
 ```
-yarn install
+npm i
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+npm run serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+npm run build
 ```
 
 ### Lints and fixes files
 ```
-yarn lint
+npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
