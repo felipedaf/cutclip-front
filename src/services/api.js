@@ -24,6 +24,13 @@ const API = () => ({
         return response
 
     },
+    getACut: async videoHash => {
+        const response = await axios.get(`${apiUrl}/cut/download/${videoHash}`, {
+            responseType: "arraybuffer"
+        })
+
+        return response
+    },
     printSomething: () => {
         console.log("printing")
     }

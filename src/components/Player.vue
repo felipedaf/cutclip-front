@@ -324,9 +324,13 @@ export default {
             if (response.status === 201) {
                 const cutList = JSON.parse(localStorage.cuts)
 
-                cutList.push({ ...response.data })
+                cutList.push({
+                    ...response.data,
+                    createdAt: Date.now()
+                })
 
                 localStorage.cuts = JSON.stringify(cutList)
+                this.$emit("newCut", cutList)
             }
 
         }

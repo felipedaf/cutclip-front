@@ -5,8 +5,8 @@
         </div>
         <div class="cuts__fixes-area">
             <div class="cuts__icon-area">
-                <template v-for="meta in this.cutsMeta">
-                    <Cut :meta="meta" :key="meta.hash"/>
+                <template v-for="cut in this.cutList">
+                    <Cut :meta="cut" :key="cut.hash"/>
                 </template>
             </div>
         </div>
@@ -19,16 +19,10 @@ export default {
     components: {
         Cut
     },
-    data: function() {
-        return {
-            cutsMeta: []
-        }
-    },
-    created: function() {
-        const cuts = localStorage.cuts
-        this.cutsMeta = JSON.parse(cuts)
-        console.log(this.cutsMeta)
+    props: {
+        cutList: Array
     }
+
 }
 
 </script>
@@ -62,8 +56,8 @@ export default {
 
 .cuts__icon-area {
     box-sizing: border-box;
-    height: max-content;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 20px;
@@ -71,6 +65,8 @@ export default {
 
 .cuts__fixes-area {
     overflow: auto;
+    scrollbar-width: thin;
     height: 100%;
+
 }
 </style>

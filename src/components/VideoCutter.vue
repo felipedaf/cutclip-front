@@ -1,14 +1,20 @@
 <template>
     <div class="videocutter__action-area">
-        <SearchBar @idChange="this.setVideoId" placeholder="Paste Youtube URL." id="search"></SearchBar>
+        <SearchBar
+            @idChange="this.setVideoId"
+            placeholder="Paste Youtube URL."
+            id="search"
+        >
+        </SearchBar>
         <div class="videocutter__content-area">
             <div class="videocutter__player-area">
                 <Player
                     :videoId="this.videoId"
+                    @newCut="refreshCutList"
                 />
             </div>
             <div class="videocutter__cuts-area">
-                <Cuts />
+                <Cuts :cutList="this.currentCutList"/>
             </div>
         </div>
     </div>
@@ -28,7 +34,45 @@ export default {
     data: function() {
         return {
             videoId: '',
+            currentCutList: []
         }
+    },
+    methods: {
+        setVideoId: function(data) {
+            this.videoId = data
+        },
+        refreshCutList: function(cutList) {
+            const FIVE_MINUTES = 1000 * 60 * 5
+
+            const diff = cutList.filter(cut => {
+                return !this.containsCut(this.currentCutList, cut)
+            })
+
+            diff.forEach(cuts => {
+                setTimeout(() => {
+                    const newList = this.currentCutList.filter(() => {
+                        this.containsCut(this.currentCutList, cuts)
+                    })
+
+                    this.currentCutList = newList
+
+                    localStorage.cuts = JSON.stringify(newList)
+
+                }, FIVE_MINUTES)
+
+            })
+
+            this.currentCutList = cutList
+        },
+        containsCut: function(cuts, cut) {
+            for (const element of cuts) {
+                if (element.hash === cut.hash)
+                    return true
+            }
+
+            return false
+        }
+
     },
     mounted: function() {
         const tag = document.createElement('script');
@@ -37,10 +81,32 @@ export default {
         const firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     },
-    methods: {
-        setVideoId: function(data) {
-            this.videoId = data
-        },
+    beforeMount: function() {
+        const FIVE_MINUTES = 1000 * 60 * 5
+        const currentTime = new Date(Date.now()).getTime()
+
+        const refreshedCuts = this.currentCutList.filter(cut => {
+            const cutCreateTime = new Date(cut.createdAt).getTime()
+            const timeDiff = currentTime - cutCreateTime
+
+            return FIVE_MINUTES - timeDiff > 0
+        })
+
+        this.currentCutList = refreshedCuts
+        localStorage.cuts = JSON.stringify(refreshedCuts)
+
+        this.currentCutList.forEach((cut , index) => {
+            const cutCreateTime = new Date(cut.createdAt).getTime()
+            const timeDiff = currentTime - cutCreateTime
+
+            setTimeout(() => {
+                this.currentCutList.splice(index, 1)
+                localStorage.cuts = JSON.stringify(this.currentCutList)
+            }, FIVE_MINUTES - timeDiff)
+        })
+    },
+    created: function() {
+        this.currentCutList = JSON.parse(localStorage.cuts) || []
     }
 
 }
