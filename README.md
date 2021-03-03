@@ -15,7 +15,7 @@ npm i
 npm run serve
 ```
 
-![Alt Text](https://giphy.com/gifs/1Ex4jgzmK7hTadnhJC/html5)
-![Alt Text](https://giphy.com/gifs/sT7P14DSHCQc8ATACi/html5)
-![Alt Text](https://giphy.com/gifs/me1dmlZWc1W3WBbC5p/html5)
-![Alt Text](https://giphy.com/gifs/ozHXOGBF50QS31kqUP/html5)
+![Alt Text](https://media.giphy.com/media/1Ex4jgzmK7hTadnhJC/giphy.gif)
+![Alt Text](https://media.giphy.com/media/sT7P14DSHCQc8ATACi/giphy.gif)
+![Alt Text](https://media.giphy.com/media/me1dmlZWc1W3WBbC5p/giphy.gif)
+![Alt Text](https://media.giphy.com/media/ozHXOGBF50QS31kqUP/giphy.gif)
